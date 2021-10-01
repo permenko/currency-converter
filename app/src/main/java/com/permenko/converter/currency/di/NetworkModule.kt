@@ -25,7 +25,7 @@ class NetworkModule {
   @Singleton
   fun retrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
     .client(okHttpClient)
-    .baseUrl("https://api.exchangeratesapi.io/")
+    .baseUrl("http://api.exchangeratesapi.io/")
     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     .addConverterFactory(GsonConverterFactory.create())
     .build()

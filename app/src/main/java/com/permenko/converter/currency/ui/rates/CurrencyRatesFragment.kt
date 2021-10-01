@@ -6,10 +6,7 @@ import android.view.View.GONE
 import android.view.inputmethod.EditorInfo.IME_ACTION_DONE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.permenko.converter.currency.R
 import com.permenko.converter.currency.di.VmFactory
 import com.permenko.converter.currency.utils.disableTouches
@@ -83,22 +80,6 @@ class CurrencyRatesFragment @Inject constructor(
       // Prevent unnecessary scroll.
       rv_currency_rates.layoutManager?.onRestoreInstanceState(recyclerViewState)
     })
-    rv_currency_rates.itemAnimator =  object : DefaultItemAnimator() {
-      override fun onMoveFinished(item: ViewHolder?) {
-        println("Animation; onMoveFinished")
-        super.onMoveFinished(item)
-      }
-
-      override fun setMoveDuration(moveDuration: Long) {
-        println("Animation; moveDuration=$moveDuration")
-        super.setMoveDuration(moveDuration)
-      }
-
-      override fun onAnimationFinished(viewHolder: RecyclerView.ViewHolder) {
-        println("Animation; onAnimationFinished")
-      }
-    }
-    // adapter.registerAdapterDataObserver()
     viewModel.scrollToTop.observe(viewLifecycleOwner, Observer { rv_currency_rates.smoothScrollToPosition(0) })
     viewModel.toInputOverlay.observe(viewLifecycleOwner, Observer {
       if (it == null) {

@@ -5,6 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface CurrencyRatesApi {
-  @GET("latest")
+  @GET("latest?access_key=API_KEY") // Insert your api key here from https://exchangeratesapi.io/
   fun rates(@Query("base") base: String?): Single<CurrencyRatesResponse>
 }

@@ -4,8 +4,5 @@ import com.permenko.converter.currency.di.AppComponent
 import com.permenko.converter.currency.di.DaggerAppComponentFake
 
 class AppFake : App() {
-  override fun appComponent(): AppComponent {
-    println("App. Fake")
-    return DaggerAppComponentFake.factory().create(this)
-  }
+  override fun appComponent(): AppComponent = DaggerAppComponentFake.factory().create(this)
 }

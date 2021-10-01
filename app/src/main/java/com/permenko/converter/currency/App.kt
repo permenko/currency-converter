@@ -20,8 +20,5 @@ abstract class App : Application() {
 }
 
 class AppReal : App() {
-  override fun appComponent(): AppComponent {
-    println("App. Real")
-    return DaggerAppComponent.factory().create(this)
-  }
+  override fun appComponent(): AppComponent = DaggerAppComponent.factory().create(this)
 }
